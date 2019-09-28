@@ -1,0 +1,73 @@
+AT^SYSINFO
+
+  5种状态:
+    . System service state.
+	0. 无服务
+	1. 有限服务
+	2. 正常服务
+	3. 有限区域服务
+	4. 省电状态
+
+    . System service domain.
+	0. 无服务
+	1. 只有CS服务
+	2. 只有PS服务
+	3. PS+CS服务
+
+    . Roaming status.
+	0. 非漫游
+	1. 漫游
+
+    . System mode.
+	0. 无服务
+	1. AMPS模式
+	2. CDMA模式
+	3. GSM/GPRS模式
+	4. HDR模式
+	5. WCDMA模式
+	6. GPS模式
+	7. GSM/WCDMA
+	8. CDMA/HDR HYBRID
+              15. TD-SCDMA mode
+
+    . SIM card state.
+	0. 无效SIM卡
+	1. 有效SIM卡
+	2. SIM卡在CS中无效
+	3. SIM卡在PS中无效
+	4. SIM卡在CS或PS中无效
+            255. SIM不存在
+
+------------------------------------------------------
+
+    . System sub mode.
+	0. 无服务
+	1. GSM模式
+	2. GPRS模式
+	3. EDGE模式
+	4. WCDMA模式
+	5. HSDPA模式
+	6. HSUPA模式
+	7. HSDPA模式和HSUPA模式
+	8. TD_SCDMA模式
+	9. HSPA+模式
+              17. HSPA+(64QAM)模式
+              18. HSPA+(MIMO)模式
+
+
+------------------------------------------------------
+
+  状态分支
+     1. 插卡 
+	卡无法使用 (比如没费用, 卡被锁等等)
+	卡正常,但无服务信号
+     2. 无卡
+	没插卡,等待插入卡
+
+
+
+
+需要验证 
+  1. 插入无法使用的卡时检查状态值
+  2. 到无信号区域检查状态值
+  3. 热拔插卡后检查状态值
