@@ -113,9 +113,11 @@ AT^SYSINFO
         < delay >
         AT+CFUN=1
 
+echo -en "AT^SYSINFO \r\n" > /dev/ttyUSB2
+echo -en "AT+CFUN=0 \r\n" > /dev/ttyUSB2
+echo -en "AT+CFUN=1 \r\n" > /dev/ttyUSB2
 
-
-
+  
 
 
 
