@@ -92,10 +92,14 @@ AT^SYSINFO
     6. 电信卡 卡正常 信号正常   ^SYSINFO: 2,3,0,9,1
        此卡拔出后               ^SYSINFO: 1,0,1,5,255
 
+	7. 移动卡 卡正常 无信号		^SYSINFO: 0,1,0,0,1
+							   ^SYSINFO: 4,0,0,0,1
 
+	8. 联通卡 卡正常 无信号		^SYSINFO: 0,0,0,0,1
+							   ^SYSINFO: 0,3,0,0,1
 
-
-
+	9. 电信卡 卡正常 无信号		^SYSINFO: 0,0,0,0,1
+								^SYSINFO: 0,3,0,0,1
 
 
 
@@ -118,6 +122,10 @@ echo -en "AT+CFUN=0 \r\n" > /dev/ttyUSB2
 echo -en "AT+CFUN=1 \r\n" > /dev/ttyUSB2
 
   
+热拔插其他运营商的卡后会出现问题
+
+
+热拔插模块会出现 ttyUSB2 设备丢失问题
 
 
 
