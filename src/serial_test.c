@@ -953,6 +953,13 @@ void *do_Recv(void *arg)
 	s_l = strlen(sysinfo);
 	char result[256];
 
+	unsigned char cmd[] = {'A', 'T', '^', 'S', 'Y' ,'S' ,'I' ,'N', 'F', 'O' ,' ' ,'\r' ,'\n'};
+
+	write(arg_t->fd, cmd, sizeof(cmd) - 1);
+
+	
+
+
     while(1){
         if((nread = read(arg_t->fd, arg_t->buff, 255)) > 0) {
 #if DEBUG_RECV
@@ -978,6 +985,7 @@ void *do_Recv(void *arg)
 				printf("[+] %d\n",atoi(token));
 			}
 			
+				exit(0);
 			
 
 /**
