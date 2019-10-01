@@ -23,10 +23,12 @@
 #define NO_SERVICE  0
 
 
+#define debug
+
 
 char *s_port[2] = {"/dev/ttyUSB2", "/dev/ttyUSB3"};
 int sysinfo[5] = {0};
-enum service_type = {Serv, Serv_dom, Roam, Mode, Sim};
+enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
 
 unsigned char cmd_0[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '0', ' ', '\r', '\n'};
 unsigned char cmd_1[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '1', ' ', '\r', '\n'};
@@ -392,7 +394,7 @@ int proce_available()
 
 int read_sysinfo()
 {
-	int fd, i, nread, nwrite;
+	int fd, i, nread, nwrite, err;
 	char r_buffer[256];
 	char r_buffer2[64];
 	char prefix[] = "SYSINFO:";
@@ -482,7 +484,7 @@ int soft_reset()
 
 int main(int argc, char **argv)
 {
-    int fd, err, f_count;
+    int fd, err, f_count, i;
    
 hard_test:
 
@@ -522,6 +524,9 @@ hard_test:
                     goto hard_test;
                 }
 
+#ifdef debug	
+		printf("[-] No SIM. \n");
+#endif 
 				sleep(20);
 				continue;
 			}
@@ -537,7 +542,7 @@ hard_test:
 			}
             break;
 
-		} while (true);
+		} while (1);
 		
 
 soft_test:
@@ -561,12 +566,12 @@ soft_test:
 					f_count++;
 			}
 
-#ifdef debug	
-		printf("[-] f_count: %d\n", f_count);
-#endif
 			if (f_count < 2)
 			{
-				sleep(10);
+#ifdef debug	
+		printf("[+] ping_availabled. \n");
+#endif
+				sleep(20);
 				continue;
 			}
 			else
@@ -574,10 +579,10 @@ soft_test:
 				goto hard_test;
 			}
 			
-		} while (true);
+		} while (1);
 
 
-	} while (true);
+	} while (1);
 
 
 
