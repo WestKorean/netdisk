@@ -484,21 +484,74 @@ int main(int argc, char **argv)
 {
     int fd, err, f_count;
    
-top:
+hard_test:
+
 	do
 	{
 		if (!dev_exist())
 		{
+#ifdef debug	
+		printf("[-] dev_exist: false\n");
+#endif
 			sleep(5);
 			continue;
 		}
-	
+
+		do
+		{
+			err = read_sysinfo(fd);
+         
+			if (err < 0)
+            {
+#ifdef debug	
+		printf("[-] RW dev error\n");
+#endif 
+                goto hard_test;
+            }
+				
+
+			// No SIM Card?
+ 			if (sysinfo[Sim] == NO_SIM)
+			{
+				err = soft_reset();
+				if (err < 0)
+                {
+#ifdef debug	
+		printf("[-] RW dev error\n");
+#endif 
+                    goto hard_test;
+                }
+
+				sleep(20);
+				continue;
+			}
+			
+			// SIM Card Error or No Service?
+			if (sysinfo[Mode] != MODE_OK || sysinfo[Serv] == NO_SERVICE)
+			{
+#ifdef debug	
+		printf("[-] MODE not OK or NO_SERVICE\n");
+#endif 
+				sleep(20);
+				continue;
+			}
+            break;
+
+		} while (true);
+		
+
+soft_test:
+
 		if (!proce_available())
 		{
+#ifdef debug	
+		printf("[-] quectel_exist: false\n");
+#endif
 			system("quectel-CM");
 			sleep(5);
 		}
-	
+
+
 		do
 		{
 			int f_count = 0;
@@ -508,56 +561,23 @@ top:
 					f_count++;
 			}
 
+#ifdef debug	
+		printf("[-] f_count: %d\n", f_count);
+#endif
 			if (f_count < 2)
 			{
-				sleep(5);
+				sleep(10);
 				continue;
 			}
 			else
 			{
-				break;
+				goto hard_test;
 			}
 			
 		} while (true);
-	
-
-				
-		do
-		{
-			err = read_sysinfo(fd);
-			if (err < 0)
-				goto top;
-
-			// No SIM Card
- 			if (sysinfo[Sim] == NO_SIM)
-			{
-				err = soft_reset();
-				if (err < 0)
-					goto top;
-				sleep(20);
-				continue;
-			}
-			
-			// SIM Card Error or No Service
-
-			if (sysinfo[Mode] != MODE_OK || sysinfo[Serv] == NO_SERVICE)
-			{
-				sleep(20);
-				continue;
-			}
-
-			
-			
-
-
-		
-		} while (true);
-		
-
 
 
 	} while (true);
-
 
 
 
@@ -568,11 +588,4 @@ top:
 		printf("sysinfo[%d]: %d\n", i, sysinfo[i]);
 	}
 #endif
-
-
-	exit(0);
-
-dev_detect:
-	printf("[-] GOTO dev_detect. \n");
-
 }
