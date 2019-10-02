@@ -1,4 +1,4 @@
-#include "serial.h"
+#include "serial_4g.h"
 
 
 char *s_port[2] = {"/dev/ttyUSB2", "/dev/ttyUSB3"};
