@@ -14,12 +14,15 @@
 #define SPORT2  "/dev/ttyUSB3"
 #define TRUE 	1
 #define FALSE	-1
-#define PING_CMD 	"ping -c 3 -w 5 114.114.114.114 -Iwwan0 | grep -c ttl"
+#define PING_CMD 	"ping -c 3 -w 5 223.5.5.5 -Iwwan0 | grep -c ttl"
 #define DEV_PATH 	"/dev/cdc-wdm0"
 #define PS_CMD 		"ps -C quectel-CM | wc -l"
 
 #define NO_SIM		255
 #define MODE_OK		9
+#define NO_SERVICE  0
+
+#define FIVE_MIN        50
 #define NO_SERVICE  0
 
 
@@ -33,6 +36,7 @@ enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
 unsigned char cmd_0[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '0', ' ', '\r', '\n'};
 unsigned char cmd_1[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '1', ' ', '\r', '\n'};
 unsigned char cmd[]   = {'A', 'T', '^', 'S', 'Y', 'S', 'I', 'N', 'F', 'O', ' ', '\r', '\n'};
+unsigned char cmd_h[] = {'A', 'T', '^', 'R', 'E', 'S', 'E', 'T', ' ', '\r', '\n'};
 
 
 
@@ -406,13 +410,12 @@ int read_sysinfo()
     if (fd < 0 || err < 0)
 		return -1;
 	
-
-	for(i = 0; i < 3; i++)
-	{
-		nwrite = write(fd, cmd, sizeof(cmd)-1);
-		if (nwrite > 0)
-			break;
-	}
+    nwrite = write(fd, cmd, sizeof(cmd));
+    if (nwrite < 0)
+    {
+        UART0_Close(fd);
+        return -1;
+    }
 
 	usleep(100*1000);
 
@@ -431,7 +434,9 @@ int read_sysinfo()
 			{
 				*str_p1 = 0x00;
 				strncpy(r_buffer2, str_p, (strlen(str_p) + 1));
-				printf("result str: %s\n", r_buffer2);
+#ifdef debug	
+				printf("result str: %s.\n", r_buffer2);
+#endif
 			}
 			
 			str_p = r_buffer2;
@@ -463,20 +468,37 @@ int soft_reset()
     if (fd < 0 || err < 0)
 		return -1;
 	
-	for(i = 0; i < 3; i++)
-	{
-		nwrite = write(fd, cmd_0, sizeof(cmd)-1);
-		if (nwrite > 0)
-		{
-			sleep(5);
-			nwrite = write(fd, cmd_1, sizeof(cmd)-1);
-			if (nwrite > 0)
-			{
-    			UART0_Close(fd);
-				return 0;
-			}
-		}
-	}
+    nwrite = write(fd, cmd_0, sizeof(cmd));
+    if (nwrite > 0)
+    {
+        sleep(5);
+        nwrite = write(fd, cmd_1, sizeof(cmd));
+        if (nwrite > 0)
+        {
+            UART0_Close(fd);
+            return 0;
+        }
+    }
+    UART0_Close(fd);
+	return -1;
+}
+
+
+int hard_reset()
+{
+	int i, fd, err, nwrite;
+
+	fd = UART0_Open();
+    err = UART0_Init(fd, 9600, 0, 8, 1, 'N');
+    if (fd < 0 || err < 0)
+		return -1;
+    nwrite = write(fd, cmd_h, sizeof(cmd));
+    if (nwrite > 0)
+    {
+        UART0_Close(fd);
+        return 0;
+    }
+    
     UART0_Close(fd);
 	return -1;
 }
@@ -484,7 +506,8 @@ int soft_reset()
 
 int main(int argc, char **argv)
 {
-    int fd, err, f_count, i;
+    int fd, err, i, ping_error;
+    unsigned int 
    
 hard_test:
 
@@ -493,7 +516,7 @@ hard_test:
 		if (!dev_exist())
 		{
 #ifdef debug	
-		printf("[-] dev_exist: false\n");
+		printf("[-] dev_exist: false.\n");
 #endif
 			sleep(5);
 			continue;
@@ -506,7 +529,7 @@ hard_test:
 			if (err < 0)
             {
 #ifdef debug	
-		printf("[-] RW dev error\n");
+		printf("[-] RW dev error.\n");
 #endif 
                 goto hard_test;
             }
@@ -515,11 +538,14 @@ hard_test:
 			// No SIM Card?
  			if (sysinfo[Sim] == NO_SIM)
 			{
+#ifdef debug	
+		printf("[+] soft_reset. \n");
+#endif
 				err = soft_reset();
 				if (err < 0)
                 {
 #ifdef debug	
-		printf("[-] RW dev error\n");
+		printf("[-] RW dev error.\n");
 #endif 
                     goto hard_test;
                 }
@@ -535,7 +561,7 @@ hard_test:
 			if (sysinfo[Mode] != MODE_OK || sysinfo[Serv] == NO_SERVICE)
 			{
 #ifdef debug	
-		printf("[-] MODE not OK or NO_SERVICE\n");
+		printf("[-] MODE not OK or NO_SERVICE.\n");
 #endif 
 				sleep(20);
 				continue;
@@ -550,7 +576,7 @@ soft_test:
 		if (!proce_available())
 		{
 #ifdef debug	
-		printf("[-] quectel_exist: false\n");
+		printf("[-] quectel_exist: false.\n");
 #endif
 			system("quectel-CM");
 			sleep(5);
@@ -559,38 +585,32 @@ soft_test:
 
 		do
 		{
-			int f_count = 0;
-			for ( i = 0; i < 2; i++)
-			{
-				if (!ping_available())
-					f_count++;
-			}
-
-			if (f_count < 2)
-			{
+            if (ping_available())
+            {
 #ifdef debug	
 		printf("[+] ping_availabled. \n");
 #endif
-				sleep(20);
-				continue;
-			}
-			else
+                sleep(20);
+                ping_error = 0;
+                continue;
+            } 
+            else
 			{
-				goto hard_test;
+                ping_error++;
+                if (ping_error < FIVE_MIN)
+				    goto hard_test;
+                else if (proce_available())
+                {
+#ifdef debug	
+		printf("[+] soft_reset. \n");
+#endif
+				    err = hard_reset();
+                    if (err < 0)
+                        goto hard_test;
+                    sleep(40);
+                }
 			}
-			
 		} while (1);
 
-
 	} while (1);
-
-
-
-
-#ifdef debug	
-	for (i = 0; i < 5; i++)
-	{
-		printf("sysinfo[%d]: %d\n", i, sysinfo[i]);
-	}
-#endif
 }
