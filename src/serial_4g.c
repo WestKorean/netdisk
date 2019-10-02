@@ -1,3 +1,15 @@
+#include "serial.h"
+
+
+char *s_port[2] = {"/dev/ttyUSB2", "/dev/ttyUSB3"};
+int sysinfo[5] = {0};
+enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
+unsigned char cmd  [] = {'A', 'T', '^', 'S', 'Y', 'S', 'I', 'N', 'F', 'O', ' ', '\r', '\n'};
+unsigned char cmd_0[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '0', ' ', '\r', '\n'};
+unsigned char cmd_1[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '1', ' ', '\r', '\n'};
+unsigned char cmd_h[] = {'A', 'T', '^', 'R', 'E', 'S', 'E', 'T', ' ', '\r', '\n'};
+
+
 /******************************************************************* 
     * 名称：                  UART0_Open 
     * 功能：                打开串口并返回串口设备文件描述 
