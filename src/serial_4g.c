@@ -3,7 +3,6 @@
 
 char *s_port[2] = {"/dev/ttyUSB2", "/dev/ttyUSB3"};
 int sysinfo[5] = {0};
-enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
 unsigned char cmd  [] = {'A', 'T', '^', 'S', 'Y', 'S', 'I', 'N', 'F', 'O', ' ', '\r', '\n'};
 unsigned char cmd_0[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '0', ' ', '\r', '\n'};
 unsigned char cmd_1[] = {'A', 'T', '+', 'C', 'F', 'U', 'N', '=', '1', ' ', '\r', '\n'};
@@ -431,7 +430,7 @@ int read_sysinfo()
 
 int soft_reset()
 {
-	int i, fd, err, nwrite;
+	int fd, err, nwrite;
 
 	fd = UART0_Open();
     err = UART0_Init(fd, 9600, 0, 8, 1, 'N');
@@ -456,7 +455,7 @@ int soft_reset()
 
 int hard_reset()
 {
-	int i, fd, err, nwrite;
+	int fd, err, nwrite;
 
 	fd = UART0_Open();
     err = UART0_Init(fd, 9600, 0, 8, 1, 'N');

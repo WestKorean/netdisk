@@ -2,11 +2,11 @@
 
 #define debug
 
-
+enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
 
 int main(int argc, char **argv)
 {
-    int fd, err, i, ping_error;
+    int err, ping_error;
    
 hard_test:
 
@@ -23,7 +23,7 @@ hard_test:
 
 		do
 		{
-			err = read_sysinfo(fd);
+			err = read_sysinfo();
          
 			if (err < 0)
             {
