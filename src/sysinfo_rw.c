@@ -507,7 +507,6 @@ int hard_reset()
 int main(int argc, char **argv)
 {
     int fd, err, i, ping_error;
-    unsigned int 
    
 hard_test:
 
