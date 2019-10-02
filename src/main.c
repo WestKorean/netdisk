@@ -3,10 +3,11 @@
 #define debug
 
 enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
-int sysinfo[5] = {0};
+
 
 int main(int argc, char **argv)
 {
+	extern int sysinfo[];
     int err, ping_error;
    
 hard_test:
