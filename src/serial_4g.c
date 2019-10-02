@@ -1,73 +1,40 @@
-#include <stdio.h>  /*标准输入输出定义*/
-#include <stdlib.h> /*标准函数库定义*/
-#include <unistd.h> /*Unix 标准函数定义*/
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>   /*文件控制定义*/
-#include <termios.h> /*PPSIX 终端控制定义*/
-#include <errno.h>   /*错误号定义*/
-#include <string.h>
-#include <sys/time.h>
-#include<pthread.h>  /*多线程定义*/
-
-
-#define FALSE -1
-#define TRUE   0
-#define STR_LEN 20
-#define FREAM_LEN 28
-
-
-
-unsigned int count,count2;
-unsigned char str  = 'A', str2 = 'A';
-
-
-
-
 /******************************************************************* 
     * 名称：                  UART0_Open 
     * 功能：                打开串口并返回串口设备文件描述 
     * 入口参数：        fd    :文件描述符     port :串口号(ttyS0,ttyS1,ttyS2) 
     * 出口参数：        正确返回为1，错误返回为0 
     *******************************************************************/
-int UART0_Open(int fd, char *port)
+int UART0_Open()
 {
 
-    fd = open(port, O_RDWR | O_NOCTTY);   //O_NDELAY 为非阻塞模式
-    if (FALSE == fd)
-    {
-        perror("Can't Open Serial Port");
-        return (FALSE);
-    }
+	int i, fd;
+
+
+	for(i = 0; i < 2; i++)
+	{
+    	fd = open(s_port[i], O_RDWR | O_NOCTTY);
+		if(fd > 0)
+			break;
+	}
+    if (fd < 0)
+		goto error;
+
      
     if (fcntl(fd, F_SETFL, 0) < 0)
-    {
-        printf("fcntl failed!\n");
-        return (FALSE);
-    }
-    else
-    {
- #if DEBUG
-         printf("fcntl=%d\n", fcntl(fd, F_SETFL, 0));
- #endif
-    }
+		goto error;
  
 
     //测试是否为终端设备
     if (0 == isatty(STDIN_FILENO))
-    {
-        printf("standard input is not a terminal device\n");
-        return (FALSE);
-    }
-    else
-    {
-#if DEBUG
-        printf("isatty success!\n");
-        printf("fd->open=%d\n", fd);
-#endif
-    }
+		goto error;
+
     return fd;
+
+error:
+	return -1;
 }
+
+
 /******************************************************************* 
     * 名称：                UART0_Close 
     * 功能：                关闭串口并返回串口设备文件描述 
@@ -79,6 +46,7 @@ void UART0_Close(int fd)
 {
     close(fd);
 }
+
 
 /******************************************************************* 
     * 名称：                UART0_Set 
@@ -223,6 +191,8 @@ int UART0_Set(int fd, int speed, int flow_ctrl, int databits, int stopbits, int 
     }
     return (TRUE);
 }
+
+
 /******************************************************************* 
     * 名称：                UART0_Init() 
     * 功能：                串口初始化 
@@ -248,6 +218,7 @@ int UART0_Init(int fd, int speed, int flow_ctrl, int databits, int stopbits, int
         return TRUE;
     }
 }
+
 
 /******************************************************************* 
     * 名称：                  UART0_Recv 
@@ -285,6 +256,8 @@ int UART0_Recv(int fd, char *rcv_buf, int data_len)
         return FALSE;
     }
 }
+
+
 /******************************************************************** 
     * 名称：            UART0_Send 
     * 功能：            发送数据 
@@ -314,94 +287,176 @@ int UART0_Send(int fd, char *send_buf, int data_len)
 
 
 
+//Network is available?
 
-
-int main(int argc, char **argv)
+int ping_available()
 {
-    int fd;  //文件描述符
-    int err, res; //返回调用函数的状态
-    int len,nread;
-    int i;
-    int wifiList_addr1 = 0x2000;
-    int wifiList_addr2 = 0x2100;
-    int addr_4g        = 0x1200;
-    int bat_addr       = 0x1210;
-    int curr_addr      = 0x1220;
-    char rcv_buf[255];
-    char buf_4g[50];
-    char baty_buf[50];
-    char curr_buf[50];
-    char wifiList_buf1[4096];
-    char wifiList_buf2[4096];
-    char *buffp1 = wifiList_buf1;
-    char *buffp2 = wifiList_buf2;
-    pthread_t tpid_1[4], tpid_2[4], tpid_4g, tpid_battery, tpid_curr, tpid_recv;
+	FILE *fstream = NULL;      
+    char buff[256];    
+    memset(buff, 0, sizeof(buff));   
+
+	if(NULL == (fstream = popen(PING_CMD,"r")))      
+    {     
+        fprintf(stderr,"execute command failed: %s",strerror(errno));      
+        return -1;      
+    }   
+
+	if(fgets(buff, sizeof(buff), fstream) != NULL)
+	{
+		pclose(fstream);
+		if (buff[0] == '3')
+			return 1;
+		else
+			return 0;
+	}
+	else
+		return -1;
+}
 
 
-    if (argc != 3)
-    {
-        printf("Usage: %s /dev/ttySn 0(send data)/1 (receive data) \n", argv[0]);
-        exit(FALSE);
-    }
-    fd = UART0_Open(fd, argv[1]); //打开串口，返回文件描述符
+//Dev is exist?
 
+int dev_exist()
+{
+	if(access(DEV_PATH, F_OK) != -1)
+		return 1;
+	else
+		return 0;
+}
+
+
+//Quectel is available?
+
+int proce_available()
+{
+	FILE *fstream = NULL;      
+    char buff[256];    
+    memset(buff, 0, sizeof(buff));  
+	int num; 
+
+	if(NULL == (fstream = popen(PS_CMD,"r")))      
+    {     
+        fprintf(stderr,"execute command failed: %s",strerror(errno));      
+        return -1;      
+    }   
+
+	if(fgets(buff, sizeof(buff), fstream) != NULL)
+	{
+		pclose(fstream);
+		num = atoi(buff);
+		if ((num - 1) == 0)
+			return 0;
+		else
+			return 1;
+	}
+	else
+		return -1;
+}
+
+
+int read_sysinfo()
+{
+	int fd, i, nread, nwrite, err;
+	char r_buffer[256];
+	char r_buffer2[64];
+	char prefix[] = "SYSINFO:";
+	char *str_p, *str_p1;
+
+
+	fd = UART0_Open();
     err = UART0_Init(fd, 9600, 0, 8, 1, 'N');
-    if (FALSE == err || FALSE == fd) {
-        printf("Init error\n");
-        exit(FALSE);
+    if (fd < 0 || err < 0)
+		return -1;
+	
+    nwrite = write(fd, cmd, sizeof(cmd));
+    if (nwrite < 0)
+    {
+        UART0_Close(fd);
+        return -1;
     }
-  	
+
+	usleep(100*1000);
+
+    do
+	{
+        if((nread = read(fd, r_buffer, 256)) > 0)
+		{
+			if ((str_p = strstr(r_buffer, prefix)) == NULL)
+				continue;
+			str_p += strlen(prefix);
+
+			if (*str_p == 0x20)
+				str_p++;
+			
+			if ((str_p1 = strchr(str_p, 0x0a)) != NULL)
+			{
+				*str_p1 = 0x00;
+				strncpy(r_buffer2, str_p, (strlen(str_p) + 1));
+#ifdef debug	
+				printf("result str: %s.\n", r_buffer2);
+#endif
+			}
+			
+			str_p = r_buffer2;
+
+			for(i = 0, str_p1 = strsep(&str_p, ","); str_p1 != NULL && i < 5; str_p1 = strsep(&str_p, ","), i++) 
+			{
+				sysinfo[i] = atoi(str_p1);
+			}
+
+    		UART0_Close(fd);
+			return 0;
+        }
+		else
+		{
+    		UART0_Close(fd);
+			return -1;
+		}
+    }
+	while(0);
+}
 
 
-    
-    while(1){
-        if((nread = read(fd, rcv_buf, 255)) > 0) {
-        if DEBUG_RECV
-            printf("Recv: %u [ ", nread);
-            for(i = 0; i < nread; i++)
-            {
-                printf("%02X ", rcv_buf[i]);
-            }
-            printf("]\n");
-        endif
+int soft_reset()
+{
+	int i, fd, err, nwrite;
+
+	fd = UART0_Open();
+    err = UART0_Init(fd, 9600, 0, 8, 1, 'N');
+    if (fd < 0 || err < 0)
+		return -1;
+	
+    nwrite = write(fd, cmd_0, sizeof(cmd));
+    if (nwrite > 0)
+    {
+        sleep(5);
+        nwrite = write(fd, cmd_1, sizeof(cmd));
+        if (nwrite > 0)
+        {
+            UART0_Close(fd);
+            return 0;
         }
     }
-    
-    
-     if (0 == strcmp(argv[2], "0"))
-     {
-         for (i = 0; i < 10; i++)
-         {
-             len = UART0_Send(fd, send_buf, 10);
-             if (len > 0)
-                 printf(" %d time send %d data successful\n", i, len);
-             else
-                 printf("send data failed!\n");
- 
-             sleep(2);
-         }
-         UART0_Close(fd);
-     }
-     else
-     {
-         while (1) //循环读取数据
-         {
-             len = UART0_Recv(fd, rcv_buf, 99);
-             if (len > 0)
-             {
-                 rcv_buf[len] = '\0';
-                 printf("receive data is %s\n", rcv_buf);
-                 printf("len = %d\n", len);
-             }
-             else
-             {
-                 printf("cannot receive data\n");
-             }
-             sleep(2);
-         }
-         UART0_Close(fd);
-     }
- 
-
     UART0_Close(fd);
+	return -1;
+}
+
+
+int hard_reset()
+{
+	int i, fd, err, nwrite;
+
+	fd = UART0_Open();
+    err = UART0_Init(fd, 9600, 0, 8, 1, 'N');
+    if (fd < 0 || err < 0)
+		return -1;
+    nwrite = write(fd, cmd_h, sizeof(cmd));
+    if (nwrite > 0)
+    {
+        UART0_Close(fd);
+        return 0;
+    }
+    
+    UART0_Close(fd);
+	return -1;
 }
