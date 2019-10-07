@@ -21,7 +21,9 @@
 #define MODE_OK		9
 #define NO_SERVICE  0
 
-#define FIVE_MIN    50
+
+#define PER_MIN     400
+#define FIVE_MIN    (5 * PER_MIN)
 #define NO_SERVICE  0
 
 

@@ -8,7 +8,8 @@ enum service_type {Serv, Serv_dom, Roam, Mode, Sim};
 int main(int argc, char **argv)
 {
 	extern int sysinfo[];
-    int err, ping_error;
+    int err;
+	unsigned int ping_error = 0;
    
 hard_test:
 
@@ -98,17 +99,20 @@ soft_test:
             else
 			{
                 ping_error++;
+#ifdef debug	
+		printf("[+] ping_error: %u. \n", ping_error);
+#endif
                 if (ping_error < FIVE_MIN)
 				    goto hard_test;
                 else if (proce_available())
                 {
 #ifdef debug	
-		printf("[+] soft_reset. \n");
+		printf("[+] hard_reset. \n");
 #endif
 				    err = hard_reset();
                     if (err < 0)
                         goto hard_test;
-                    sleep(40);
+                    sleep(60);
                 }
 			}
 		} while (1);
