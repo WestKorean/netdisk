@@ -114,6 +114,7 @@ soft_test:
                         goto hard_test;
                     sleep(60);
                 }
+				ping_error = 0;
 			}
 		} while (1);
 
