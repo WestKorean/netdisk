@@ -20,7 +20,7 @@ hard_test:
 #ifdef debug	
 		printf("[-] dev_exist: false.\n");
 #endif
-			sleep(5);
+			sleep(10);
 			continue;
 		}
 
@@ -81,7 +81,7 @@ soft_test:
 		printf("[-] quectel_exist: false.\n");
 #endif
 			system("quectel-CM");
-			sleep(5);
+			sleep(10);
 		}
 
 
