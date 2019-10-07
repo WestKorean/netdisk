@@ -22,8 +22,8 @@
 #define NO_SERVICE  0
 
 
-#define PER_MIN     400
-#define FIVE_MIN    (5 * PER_MIN)
+#define PER_MIN     12
+#define FIVE_MIN    (1 * PER_MIN)
 #define NO_SERVICE  0
 
 
