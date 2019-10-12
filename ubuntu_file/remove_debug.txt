@@ -1,0 +1,22 @@
+--------------------------------------------
+Keyword:
+
+	ymdebug
+	lbcdebug
+
+
+
+--------------------------------------------
+
+去debug时发现的一些疑点:
+
+  Kernel:
+	
+	type-c
+	net/wireless/reg.c +2830	直接 return ?
+					   +2863	直接 return ?
+					   
+	powerbank
+	drivers/mmc/core/mmc.c +1409   注释掉了 err处理, 出错后继续执行 ?
+	
+																																																															

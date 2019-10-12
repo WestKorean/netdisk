@@ -1,0 +1,18 @@
+
+CONFIG_POWER_SAVING	可以尝试关闭
+
+CONFIG_BT_COEXIST	蓝牙相关 可以关闭
+
+CONFIG_LOAD_PHY_PARA_FROM_FILE 	可以尝试关闭
+
+CONFIG_TXPWR_BY_RATE_EN		--
+
+CONFIG_BR_EXT		可以尝试关闭
+
+CONFIG_WIFI_MONITOR          可以尝试打开
+
+
+
+rtw_mlme_ext.c +12245  	错误警告代码
+
+

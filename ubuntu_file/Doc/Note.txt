@@ -1,0 +1,55 @@
+公司虚拟机:   主页 https://192.168.5.80   root Huawei12#$    192.168.5.87 
+公司网关: 192.168.5.1    king    dashuju8
+
+无线路由SVN:
+https://192.168.5.11:60443/svn/Linux-PRO/wireless_router
+
+
+
+------------------------------------------------------------------------
+
+make menuconfig ARCH=arm
+make zImage dtbs ARCH=arm CROSS_COMPILE=arm-linux- -j$(nproc)
+make modules ARCH=arm CROSS_COMPILE=arm-linux- -j$(nproc)
+make modules_install INSTALL_MOD_PATH=  ARCH=arm CROSS_COMPILE=arm-linux-
+
+------------------------------------------------------------------------
+
+4G模块内核开关:
+
+1.  Enable CONFIG_USB_SERIAL_OPTION 
+Device Drivers → 
+  USB Support →
+    USB Serial Converter support → 
+       USB driver for GSM and CDMA modems  
+   
+     USB Modem (CDC ACM) support
+
+2.  Enable CONFIG_USB_USBNET
+ Device Drivers → 
+   Network device support → 
+    USB Network Adapters → 
+      Multi-purpose USB Networking Framework 
+
+3.   同上 QMI WWAN driver for Qualcomm MSM based 3G and LTE modems 
+
+
+4G涉及驱动补丁:
+drivers/usb/serial/option.c 
+drivers/usb/serial/usb_wwan.c 
+drivers/net/usb/qmi_wwan.c 
+
+------------------------------------------------------------------------
+
+共享网络连接方法:
+
+1. 开启网络转发:
+    echo 1 >  /proc/sys/net/ipv4/ip_forward
+
+2. 开启NAT:
+    iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+
+
+iptable 命令:
+    iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+

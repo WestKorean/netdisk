@@ -1,0 +1,1086 @@
+U-Boot 2016.01 (Sep 26 2019 - 19:01:59 +0800)
+
+Model: FriendlyElec boards based on Nexell s5p6818
+Board: s5p6818-X
+[ymdebug] to announce_dram_init, at init_sequence_f
+DRAM:  [ymdebug] to dram_init, at init_sequence_f
+[ymdebug] to dram_init, at init_sequence_f, ram_size[2108686336]
+[ymdebug] into setup_dest_addr, at init_sequence_f
+[***ymdebug***] tomap_sysmem, paddr[0xbba3ef68],len[152]
+[***ymdebug***] reserve_board, gd->bd map addr[0xbba3ef68]
+[***ymdebug***] tomap_sysmem, paddr[0xbba3ee08],len[352]
+[***ymdebug***] setup_dram_config
+[***ymdebug***] dram_init_banksize, g_NR_chip[0]
+[***ymdebug***] dram_init_banksize, gd[0x43bffe60]
+[***ymdebug***] dram_init_banksize, machine_arch_type[0x1aa2]
+[***ymdebug***] dram_init_banksize, bi_dram[0],start[1073741824],size[2108686336]
+[***ymdebug***]show_dram_config into 1
+[***ymdebug***]banks [0] 
+[***ymdebug***]show_dram_config to print_size
+2 GiB
+[***ymdebug***] tomap_sysmem, paddr[0xbba3f000],len[33570816]
+Panel: N/A (-1)
+MMC:   NEXELL DWMMC: 0, NEXELL DWMMC: 1
+Card did not respond to voltage select!
+*** Warning - MMC init failed, using default environment
+
+HDMI:  display.0, preset 0 (1280 *  720)
+HDMI:  phy ready...
+LCD:   [HDMI] dp.0.1 1280x720 32bpp FB:0x46000000
+** Bad device mmc 1 **
+Error: could not access storage.
+Error: no valid bmp image at 47000000
+In:    serial
+Out:   serial
+Err:   serial
+[ymdebug]into board_late_init...
+[lbcdebug]ec20_4g_gpio_init...
+[lbcdebug]gpio_d 28 [1]
+[lbcdebug]gpio_d 29 [1]
+[lbcdebug]gpio_d 30 [0]
+[lbcdebug]gpio_d 31 [1]
+[lbcdebug]gpio_e 03 [1]
+[lbcdebug] 0339 bd_update_env, bootargs:<NULL>
+!MMC init failed
+
+[ymdebug] main_loop...
+[ymdebug] autoboot_command...
+Hit any key to stop autoboot:  0 
+[***ymdebug***] tomap_sysmem, paddr[0x40080000],len[0]
+15008688 bytes read in 864 ms (16.6 MiB/s)
+[***ymdebug***] tomap_sysmem, paddr[0x48000000],len[0]
+** File not found ramdisk.img **
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+42832 bytes read in 17 ms (2.4 MiB/s)
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x40080000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x40080000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x48000000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+## Flattened Device Tree blob at 49000000
+   Booting using the fdt blob at 0x49000000
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+   reserving fdt memory region: addr=bde00000 size=100000
+   Using Device Tree in place at 0000000049000000, end 000000004900d74f
+[***ymdebug***] tomap_sysmem, paddr[0x49000000],len[0]
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 4.4.49-s5p6818 (root@kali) (gcc version 6.4.0 (ctng-1.23.0-150g-FA) ) #119 SMP PREEMPT Thu Sep 26 18:58:01 CST 2019
+[    0.000000] Boot CPU: AArch64 Processor [410fd033]
+[    0.000000] Machine model: FriendlyElec NanoPi Fire3
+[    0.000000] Display: HDMI selected
+[    0.000000] cma: Reserved 192 MiB at 0x00000000b1000000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] PERCPU: Embedded 21 pages/cpu @ffffffc07d9f4000 s46440 r8192 d31384 u86016
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 845719
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 506772
+[    0.000000] Kernel command line: console=ttySAC0,115200n8 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait rw consoleblank=0 net.ifnames=0 lcd=HDMI720P60 bootdev=2
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] [ymdebug]get_num_physpages, phys_pages [0x514816][ymdebug]mem_init_print_info, physpages 514816
+[    0.000000] Memory: 1795256K/2059264K available (9748K kernel code, 1064K rwdata, 3264K rodata, 560K init, 1070K bss, 67400K reserved, 196608K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     modules : 0xffffff8000000000 - 0xffffff8008000000   (   128 MB)
+[    0.000000]     vmalloc : 0xffffff8008000000 - 0xffffffbdbfff0000   (   246 GB)
+[    0.000000]       .init : 0xffffff8008d3a000 - 0xffffff8008dc6000   (   560 KB)
+[    0.000000]       .text : 0xffffff8008080000 - 0xffffff8008a06000   (  9752 KB)
+[    0.000000]     .rodata : 0xffffff8008a06000 - 0xffffff8008d3a000   (  3280 KB)
+[    0.000000]       .data : 0xffffff8008dc6000 - 0xffffff8008ed03b0   (  1065 KB)
+[    0.000000]     vmemmap : 0xffffffbdc0000000 - 0xffffffbfc0000000   (     8 GB maximum)
+[    0.000000]               0xffffffbdc0000000 - 0xffffffbdc1f6c000   (    31 MB actual)
+[    0.000000]     fixed   : 0xffffffbffe7fd000 - 0xffffffbffec00000   (  4108 KB)
+[    0.000000]     PCI I/O : 0xffffffbffee00000 - 0xffffffbfffe00000   (    16 MB)
+[    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc07db00000   (  2011 MB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000]  Build-time adjustment of leaf fanout to 64.
+[    0.000000] NR_IRQS:64 nr_irqs:64 0
+[    0.000000] PLL : [0] =  800000000, [1] =  800000000, [2] =  614394000, [3] =  800000000
+[    0.000000] (0) PLL1: CPU  FCLK =  800000000, HCLK = 200000000 (G0)
+[    0.000000] (7) PLL1: CPU  FCLK =  800000000, HCLK = 200000000 (G1)
+[    0.000000] (2) PLL3: MEM  FCLK =  800000000, DCLK = 800000000, BCLK = 400000000,
+[    0.000000] PCLK = 200000000
+[    0.000000] (1) PLL0: BUS  BCLK =  400000000, PCLK = 200000000
+[    0.000000] (8) PLL0: CCI4 BCLK =  400000000, PCLK = 200000000
+[    0.000000] (3) PLL0: G3D  BCLK =  400000000
+[    0.000000] (4) PLL0: VPU  BCLK =  400000000, PCLK = 200000000
+[    0.000000] (5) PLL0: DISP BCLK =  400000000, PCLK = 200000000
+[    0.000000] CPU REF HZ: 24000000 hz (0xc0010000:0xffffff8008004000)
+[    0.000000] clocksource: source timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 191126044627 ns
+[    0.000000] sched_clock: 64 bits at 250 Hz, resolution 4000000ns, wraps every 9007199254000000ns
+[    0.000000] Console: colour dummy device 80x25
+[    0.040000] Calibrating delay loop... 19.84 BogoMIPS (lpj=39680)
+[    0.040000] pid_max: default: 32768 minimum: 301
+[    0.044000] Security Framework initialized
+[    0.044000] Yama: becoming mindful.
+[    0.044000] SELinux:  Initializing.
+[    0.044000] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.044000] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.044000] Initializing cgroup subsys memory
+[    0.044000] Initializing cgroup subsys devices
+[    0.044000] Initializing cgroup subsys freezer
+[    0.044000] Initializing cgroup subsys hugetlb
+[    0.044000] sched-energy: CPU device node has no sched-energy-costs
+[    0.044000] Invalid sched_group_energy for CPU0
+[    0.044000] CPU0: update cpu_capacity 1024
+[    0.044000] ASID allocator initialised with 256 entries
+[    0.080000] Detected VIPT I-cache on CPU1
+[    0.080000] Invalid sched_group_energy for CPU1
+[    0.080000] CPU1: update cpu_capacity 1024
+[    0.080000] CPU1: Booted secondary processor [410fd033]
+[    0.092000] Detected VIPT I-cache on CPU2
+[    0.092000] Invalid sched_group_energy for CPU2
+[    0.092000] CPU2: update cpu_capacity 1024
+[    0.092000] CPU2: Booted secondary processor [410fd033]
+[    0.104000] Detected VIPT I-cache on CPU3
+[    0.104000] Invalid sched_group_energy for CPU3
+[    0.104000] CPU3: update cpu_capacity 1024
+[    0.104000] CPU3: Booted secondary processor [410fd033]
+[    0.116000] Detected VIPT I-cache on CPU4
+[    0.116000] Invalid sched_group_energy for CPU4
+[    0.116000] CPU4: update cpu_capacity 1024
+[    0.116000] CPU4: Booted secondary processor [410fd033]
+[    0.128000] Detected VIPT I-cache on CPU5
+[    0.128000] Invalid sched_group_energy for CPU5
+[    0.128000] CPU5: update cpu_capacity 1024
+[    0.128000] CPU5: Booted secondary processor [410fd033]
+[    0.140000] Detected VIPT I-cache on CPU6
+[    0.140000] Invalid sched_group_energy for CPU6
+[    0.140000] CPU6: update cpu_capacity 1024
+[    0.140000] CPU6: Booted secondary processor [410fd033]
+[    0.152000] Detected VIPT I-cache on CPU7
+[    0.152000] Invalid sched_group_energy for CPU7
+[    0.152000] CPU7: update cpu_capacity 1024
+[    0.152000] CPU7: Booted secondary processor [410fd033]
+[    0.152000] Brought up 8 CPUs
+[    0.152000] SMP: Total of 8 processors activated.
+[    0.152000] CPU features: GIC system register CPU interface present but disabled by higher exception level
+[    0.152000] CPU: All CPU(s) started at EL2
+[    0.152000] alternatives: patching kernel code
+[    0.152000] Invalid sched_group_energy for CPU7
+[    0.152000] Invalid sched_group_energy for Cluster7
+[    0.152000] Invalid sched_group_energy for CPU6
+[    0.152000] Invalid sched_group_energy for Cluster6
+[    0.152000] Invalid sched_group_energy for CPU5
+[    0.152000] Invalid sched_group_energy for Cluster5
+[    0.152000] Invalid sched_group_energy for CPU4
+[    0.152000] Invalid sched_group_energy for Cluster4
+[    0.152000] Invalid sched_group_energy for CPU3
+[    0.152000] Invalid sched_group_energy for Cluster3
+[    0.152000] Invalid sched_group_energy for CPU2
+[    0.152000] Invalid sched_group_energy for Cluster2
+[    0.152000] Invalid sched_group_energy for CPU1
+[    0.152000] Invalid sched_group_energy for Cluster1
+[    0.152000] Invalid sched_group_energy for CPU0
+[    0.152000] Invalid sched_group_energy for Cluster0
+[    0.152000] devtmpfs: initialized
+[    0.180000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.188000] pinctrl core: initialized pinctrl subsystem
+[    0.188000] ECID: 8e74bd3a:ae480157:00000000:04e81234
+[    0.188000] LOT ID : NGA79
+[    0.188000] NET: Registered protocol family 16
+[    0.200000] cpuidle: using governor ladder
+[    0.212000] cpuidle: using governor menu
+[    0.212000] vdso: 2 pages (1 code @ ffffff8008a0c000, 1 data @ ffffff8008dcc000)
+[    0.212000] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.216000] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.216000] [ymdebug][drivers/i2c/i2c-boardinfo.c,i2c_register_board_info,68]: busnum=3,first dyn num=3
+[    0.224000] nexell-reset c0012000.reset: nexell reset: nr_resets [96], base [ffffff800806e000]
+[    0.264000] pl08xdmac c0000000.pl08xdma: initialized 8 virtual memcpy channels
+[    0.264000] pl08xdmac c0000000.pl08xdma: initialized 16 virtual slave channels
+[    0.268000] pl08xdmac c0000000.pl08xdma: DMA: PL080 rev0 at 0xc0000000 irq 16
+[    0.268000] pl08xdmac c0001000.pl08xdma: initialized 8 virtual memcpy channels
+[    0.268000] pl08xdmac c0001000.pl08xdma: initialized 15 virtual slave channels
+[    0.272000] pl08xdmac c0001000.pl08xdma: DMA: PL080 rev0 at 0xc0001000 irq 17
+[    0.272000] c00a1000.serial: ttySAC0 at MMIO 0xc00a1000 (irq = 18, base_baud = 0) is a S3C6400/10
+[    1.040000] console [ttySAC0] enabled
+[    1.044000] c00a0000.serial: ttySAC1 at MMIO 0xc00a0000 (irq = 19, base_baud = 0) is a S3C6400/10
+[    1.052000] c00a2000.serial: ttySAC2 at MMIO 0xc00a2000 (irq = 20, base_baud = 0) is a S3C6400/10
+[    1.064000] c00a3000.serial: ttySAC3 at MMIO 0xc00a3000 (irq = 21, base_baud = 0) is a S3C6400/10
+[    1.072000] c006d000.serial: ttySAC4 at MMIO 0xc006d000 (irq = 22, base_baud = 0) is a S3C6400/10
+[    1.080000] SCSI subsystem initialized
+[    1.084000] usbcore: registered new interface driver usbfs
+[    1.088000] usbcore: registered new interface driver hub
+[    1.092000] usbcore: registered new device driver usb
+[    1.100000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_init,295]: start... 
+[    1.104000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_probe,i2c_gpio_probe,136]: into... 
+[    1.116000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_probe,145]: of_i2c_gpio_get_pins ok, sda_pin=80,scl_pin=79 
+[    1.124000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_probe,232]: pdev->id=-1
+[    1.132000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_probe,239]: pdev->id=-1,id auto=0,name=c0000000.soc:i2c@3
+[    1.144000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_probe,248]: adap nr=3, adap name=c0000000.soc:i2c@3
+[    1.152000] i2c-gpio c0000000.soc:i2c@3: using pins 80 (SDA) and 79 (SCL)
+[    1.160000] [ymdebug][drivers/i2c/busses/i2c-gpio.c,i2c_gpio_init,301]: over
+[    1.168000] s3c-i2c c00a4000.i2c: slave address 0x66
+[    1.172000] s3c-i2c c00a4000.i2c: bus frequency set to 390 KHz
+[    1.180000] s3c-i2c c00a4000.i2c: i2c-0: S3C I2C adapter
+[    1.184000] s3c-i2c c00a5000.i2c: slave address 0x66
+[    1.188000] s3c-i2c c00a5000.i2c: bus frequency set to 97 KHz
+[    1.196000] s3c-i2c c00a5000.i2c: i2c-1: S3C I2C adapter
+[    1.200000] media: Linux media interface: v0.10
+[    1.204000] Linux video capture interface: v2.00
+[    1.208000] pps_core: LinuxPPS API ver. 1 registered
+[    1.212000] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.224000] PTP clock support registered
+[    1.232000] axp_mfd 3-0034: AXP (CHIP ID: 0x06) detected
+[    1.240000] Advanced Linux Sound Architecture Driver Initialized.
+[    1.244000] Bluetooth: Core ver 2.21
+[    1.244000] NET: Registered protocol family 31
+[    1.248000] Bluetooth: HCI device and connection manager initialized
+[    1.256000] Bluetooth: HCI socket layer initialized
+[    1.260000] Bluetooth: L2CAP socket layer initialized
+[    1.264000] Bluetooth: SCO socket layer initialized
+[    1.272000] NetLabel: Initializing
+[    1.272000] NetLabel:  domain hash size = 128
+[    1.280000] NetLabel:  protocols = UNLABELED CIPSOv4
+[    1.284000] NetLabel:  unlabeled traffic allowed by default
+[    1.288000] clocksource: Switched to clocksource source timer
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000]  dummy_timer is not functional.
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000]  dummy_timer is not functional.
+[    1.292000]  dummy_timer is not functional.
+[    1.292000] Could not switch to high resolution mode on CPU 7
+[    1.292000] Could not switch to high resolution mode on CPU 5
+[    1.292000] Could not switch to high resolution mode on CPU 1
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000]  dummy_timer is not functional.
+[    1.292000]  dummy_timer is not functional.
+[    1.292000] Clockevents: could not switch to one-shot mode:
+[    1.292000]  dummy_timer is not functional.
+[    1.292000] Could not switch to high resolution mode on CPU 0
+[    1.292000] Could not switch to high resolution mode on CPU 4
+[    1.292000] Could not switch to high resolution mode on CPU 2
+[    1.292000]  dummy_timer is not functional.
+[    1.292000] Could not switch to high resolution mode on CPU 3
+[    1.296000] Clockevents: could not switch to one-shot mode: dummy_timer is not functional.
+[    1.296000] Could not switch to high resolution mode on CPU 6
+[    1.528000] FS-Cache: Loaded
+[    1.532000] CacheFiles: Loaded
+[    1.532000] io scheduler noop registered
+[    1.532000] io scheduler deadline registered
+[    1.540000] io scheduler cfq registered (default)
+[    1.560000] dwmmc_nexell c0069000.dw_mmc: fifo-depth property not found, using value of FIFOTH register as default
+[    1.564000] dwmmc_nexell c0069000.dw_mmc: IDMAC supports 32-bit address mode.
+[    1.572000] dwmmc_nexell c0069000.dw_mmc: Using internal DMA controller.
+[    1.580000] dwmmc_nexell c0069000.dw_mmc: Version ID is 250a
+[    1.584000] dwmmc_nexell c0069000.dw_mmc: DW MMC controller at irq 25,32 bit host data width,16 deep fifo
+[    1.596000] dwmmc_nexell c0069000.dw_mmc: No vmmc regulator found
+[    1.600000] dwmmc_nexell c0069000.dw_mmc: No vqmmc regulator found
+[    1.608000] [ymdebug][drivers/mmc/core/core.c,mmc_power_up,1747]:host->index=0
+[    1.612000] [ymdebug][drivers/mmc/core/core.c,mmc_power_up,1761]:host->index=0,Initial signal voltage of 3.3v
+[    1.864000] mmc0: run _mmc_detect_change()
+[    1.864000] dwmmc_nexell c0069000.dw_mmc: 1 slots initialized
+[    1.864000] [ymdebug][drivers/mmc/core/core.c,mmc_power_up,1747]:host->index=0
+[    1.864000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=52,retries=0
+[    1.864000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=52,retries=0
+[    1.896000] dwmmc_nexell c0062000.dw_mmc: fifo-depth property not found, using value of FIFOTH register as default
+[    1.904000] dwmmc_nexell c0062000.dw_mmc: IDMAC supports 32-bit address mode.
+[    1.912000] dwmmc_nexell c0062000.dw_mmc: Using internal DMA controller.
+[    1.920000] dwmmc_nexell c0062000.dw_mmc: Version ID is 250a
+[    1.924000] dwmmc_nexell c0062000.dw_mmc: DW MMC controller at irq 26,32 bit host data width,16 deep fifo
+[    1.932000] dwmmc_nexell c0062000.dw_mmc: No vmmc regulator found
+[    1.940000] dwmmc_nexell c0062000.dw_mmc: No vqmmc regulator found
+[    1.948000] dwmmc_nexell c0062000.dw_mmc: Got CD GPIO
+[    1.952000] [ymdebug][drivers/mmc/core/core.c,mmc_power_up,1747]:host->index=1
+[    1.960000] [ymdebug][drivers/mmc/core/core.c,mmc_power_up,1761]:host->index=1,Initial signal voltage of 3.3v
+[    2.072000] [ymdebug][drivers/mmc/core/mmc_ops.c,mmc_go_idle,168]:err =0
+[    2.208000] mmc1: run _mmc_detect_change()
+[    2.208000] dwmmc_nexell c0062000.dw_mmc: 1 slots initialized
+[    2.212000] NET: Registered protocol family 2
+[    2.216000] TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+[    2.224000] TCP bind hash table entries: 16384 (order: 7, 524288 bytes)
+[    2.228000] TCP: Hash tables configured (established 16384 bind 16384)
+[    2.236000] UDP hash table entries: 1024 (order: 4, 98304 bytes)
+[    2.240000] UDP-Lite hash table entries: 1024 (order: 4, 98304 bytes)
+[    2.248000] NET: Registered protocol family 1
+[    2.252000] RPC: Registered named UNIX socket transport module.
+[    2.256000] RPC: Registered udp transport module.
+[    2.264000] RPC: Registered tcp transport module.
+[    2.268000] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    2.272000] Trying to unpack rootfs image as initramfs...
+[    2.280000] rootfs image is not initramfs (junk in compressed archive); looks like an initrd
+[    2.296000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=8,retries=0
+[    2.304000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=5,retries=3
+[    2.312000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=55,retries=0
+[    2.320000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=55,retries=0
+[    2.332000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=55,retries=0
+[    2.336000] Freeing initrd memory: 14656K (ffffffc008000000 - ffffffc008e50000)
+[    2.336000] Initcalls thread level:6
+[    2.344000] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    2.348000] futex hash table entries: 2048 (order: 5, 131072 bytes)
+[    2.348000] audit: initializing netlink subsys (disabled)
+[    2.348000] audit: type=2000 audit(2.344:1): initialized
+[    2.348000] Initialise system trusted keyring
+[    2.348000] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    2.372000] FS-Cache: Netfs 'nfs' registered for caching
+[    2.372000] NFS: Registering the id_resolver key type
+[    2.372000] Key type id_resolver registered
+[    2.372000] Key type id_legacy registered
+[    2.372000] fuse init (API version 7.23)
+[    2.412000] [ymdebug][drivers/mmc/core/core.c,mmc_wait_for_cmd,781]:cmd->error=-110,host-index=0, OPCODE=55,retries=0
+[    2.416000] NET: Registered protocol family 38
+[    2.416000] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
+[    2.424000] Waiting for root device /dev/mmcblk0p2...
+[    2.424000] [drm] Initialized drm 1.1.0 20060810
+[    2.424000] [drm] Load LVDS panel
+[    2.428000] [drm] Load HDMI panel
+[    2.428000] [drm] irq 36 install for hdp
+[    2.428000] [drm] num of crtcs 2, FB align 1
+[    2.428000] [drm] crtc[0]: pipe.0
+[    2.428000] [drm] crtc[1]: pipe.1
+[    2.428000] [drm] Bind LVDS panel
+[    2.428000] nexell,display_drm c0102800.display_drm: bound c0101000.display_drm_lvds (ops 0xffffff8008a81560)
+[    2.428000] [drm] Bind HDMI panel
+[    2.428000] [drm] HDMI force connected at boot
+[    2.428000] nexell,display_drm c0102800.display_drm: bound c0101000.display_drm_hdmi (ops 0xffffff8008a81a80)
+[    2.428000] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+[    2.428000] [drm] No driver support for vblank timestamp query.
+[    2.428000] [drm] HDMI: connect
+[    2.428000] [drm] FB counts = 3, FB vblank Pass fb crtcs 2 [0xff]
+[    2.428000] [drm] HDMI: connect
+[    2.432000] [drm] framebuffer width(1280), height(720) and bpp(32) buffers(3)
+[    2.440000] [drm] splash image: no reserved memory-region
+[    2.440000] [drm] splash image: memroy from HW
+[    2.440000] [drm] Copy splash image from 0x46000000(0xffffff800905b000) to 0xffffff8009701000 size 3686400
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2045]:
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2051]:mmc_send_op_cond, err=0
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2054]:
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2067]:
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2081]:
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1390]:host->index=0
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1394]:not spi,host->index=0
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1398]:host->index=0
+[    2.548000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1406]:host->index=0
+[    2.584000] HDMI: PHY [Ready Done][0x1] ...
+[    2.608000] [drm] request CRTC.34 IRQ 0
+[    2.628000] Console: switching to colour frame buffer device 160x45
+[    2.716000] nexell,display_drm c0102800.display_drm: fb0:  frame buffer device
+[    2.736000] [drm] Initialized nexell 3.0.0 20160219 on minor 0
+[    2.740000] Mali: Mali device driver loaded
+[    2.740000] Unable to detect cache hierarchy from DT for CPU 0
+[    2.748000] brd: module loaded
+[    2.756000] [ymdebug][drivers/mmc/core/mmc_ops.c,mmc_go_idle,168]:err =0
+[    2.760000] loop: module loaded
+[    2.768000] PPP generic driver version 2.4.2
+[    2.768000] PPP BSD Compression module registered
+[    2.772000] PPP Deflate Compression module registered
+[    2.776000] PPP MPPE Compression module registered
+[    2.780000] NET: Registered protocol family 24
+[    2.784000] usbcore: registered new interface driver qmi_wwan
+[    2.792000] c0040000.dwc2otg supply vusb_d not found, using dummy regulator
+[    2.796000] c0040000.dwc2otg supply vusb_a not found, using dummy regulator
+[    3.084000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1410]:host->index=0
+[    3.084000] [ymdebug][drivers/mmc/core/mmc_ops.c,mmc_send_op_cond,220]:err=-110,index=0,ETIMEDOUT,cmd.resp[0]=0x40ff8080
+[    3.112000] [ymdebug][drivers/mmc/core/mmc_ops.c,mmc_send_op_cond,215]:err=0,index=0,MMC_CARD_BUSY
+[    3.112000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1417]:host->index=0
+[    3.116000] dwc2 c0040000.dwc2otg: EPs: 16, dedicated fifos, 6016 entries in SPRAM
+[    3.128000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1426]:host->index=0
+[    3.136000] [ymdebug][drivers/mmc/core/mmc_ops.c,mmc_all_send_cid,248]:host->index=0,cid resp[0x15010041,0x4a544434,0x52030f14,0x4ff366c7]
+[    3.148000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1438]:host->index=0
+[    3.156000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1450]:host->index=0
+[    3.164000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1462]:host->index=0
+[    3.168000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1468]:host->index=0
+[    3.176000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1479]:host->index=0
+[    3.184000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1484]:host->index=0
+[    3.192000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1496]:host->index=0
+[    3.200000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1507]:host->index=0
+[    3.204000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1513]:host->index=0
+[    3.220000] dwc2 c0040000.dwc2otg: DWC OTG Controller
+[    3.220000] dwc2 c0040000.dwc2otg: new USB bus registered, assigned bus number 1
+[    3.224000] mmc0: MAN_BKOPS_EN bit is not set
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1532]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1565]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1577]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1596]:host->index=0
+[    3.224000] mmc_host mmc0: Bus speed (slot 0) = 100000000Hz (slot req 52000000Hz, actual 50000000HZ div = 1)
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1621]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1626]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1643]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1667]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_init_card,1690]:host->index=0
+[    3.224000] [ymdebug][drivers/mmc/core/mmc.c,mmc_attach_mmc,2086]:
+[    3.224000] mmc0: new high speed MMC card at address 0001
+[    3.224000] mmcblk0: mmc0:0001 AJTD4R 14.6 GiB 
+[    3.228000] mmcblk0boot0: mmc0:0001 AJTD4R partition 1 4.00 MiB
+[    3.228000] mmcblk0boot1: mmc0:0001 AJTD4R partition 2 4.00 MiB
+[    3.228000] mmcblk0rpmb: mmc0:0001 AJTD4R partition 3 4.00 MiB
+[    3.228000]  mmcblk0: p1 p2
+[    3.340000] dwc2 c0040000.dwc2otg: irq 28, io mem 0xc0040000
+[    3.348000] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    3.352000] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.360000] usb usb1: Product: DWC OTG Controller
+[    3.364000] usb usb1: Manufacturer: Linux 4.4.49-s5p6818 dwc2_hsotg
+[    3.372000] usb usb1: SerialNumber: c0040000.dwc2otg
+[    3.376000] hub 1-0:1.0: USB hub found
+[    3.380000] hub 1-0:1.0: 1 port detected
+[    3.384000] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.392000] ehci-exynos: EHCI EXYNOS driver
+[    3.396000] exynos-ehci c0030000.ehci: EHCI Host Controller
+[    3.400000] exynos-ehci c0030000.ehci: new USB bus registered, assigned bus number 2
+[    3.408000] exynos-ehci c0030000.ehci: irq 27, io mem 0xc0030000
+[    3.424000] exynos-ehci c0030000.ehci: USB 2.0 started, EHCI 1.00
+[    3.424000] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    3.428000] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.436000] usb usb2: Product: EHCI Host Controller
+[    3.440000] usb usb2: Manufacturer: Linux 4.4.49-s5p6818 ehci_hcd
+[    3.448000] usb usb2: SerialNumber: c0030000.ehci
+[    3.452000] hub 2-0:1.0: USB hub found
+[    3.456000] hub 2-0:1.0: 3 ports detected
+[    3.460000] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    3.468000] ohci-exynos: OHCI EXYNOS driver
+[    3.472000] exynos-ohci c0020000.ohci: USB Host Controller
+[    3.476000] exynos-ohci c0020000.ohci: new USB bus registered, assigned bus number 3
+[    3.484000] exynos-ohci c0020000.ohci: irq 27, io mem 0xc0020000
+[    3.548000] usb usb3: New USB device found, idVendor=1d6b, idProduct=0001
+[    3.548000] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.556000] usb usb3: Product: USB Host Controller
+[    3.560000] usb usb3: Manufacturer: Linux 4.4.49-s5p6818 ohci_hcd
+[    3.564000] usb usb3: SerialNumber: c0020000.ohci
+[    3.572000] hub 3-0:1.0: USB hub found
+[    3.572000] hub 3-0:1.0: 3 ports detected
+[    3.580000] usbcore: registered new interface driver cdc_wdm
+[    3.584000] usbcore: registered new interface driver uas
+[    3.588000] usbcore: registered new interface driver usb-storage
+[    3.596000] usbcore: registered new interface driver usbserial
+[    3.600000] usbcore: registered new interface driver usbserial_generic
+[    3.608000] usbserial: USB Serial support registered for generic
+[    3.612000] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    3.612000] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    3.620000] devtmpfs: mounted
+[    3.632000] usbcore: registered new interface driver option
+[    3.636000] usbserial: USB Serial support registered for GSM modem (1-port)
+[    3.644000] mousedev: PS/2 mouse device common for all mice
+[    3.648000] <<-GTP-INFO->> GTP driver installing
+[    3.652000] touchscreen-1wire        initialized
+[    3.656000] backlight-1wire  initialized
+[    3.660000] input: fa_ts_input as /devices/virtual/input/input0
+[    3.668000] ts-if    initialized
+[    3.668000] nx-rtc c0010c00.rtc: [RTC] day=2019.10.09 time=11:25:58
+[    3.676000] nx-rtc c0010c00.rtc: rtc core: registered nx as rtc0
+[    3.684000] i2c /dev entries driver
+[    3.688000] nx-v4l2 nx-v4l2: nx_v4l2_probe success
+[    3.692000] nx-vpu c0080000.video-codec: encoder registered as /dev/video14
+[    3.696000] nx-vpu c0080000.video-codec: decoder registered as /dev/video15
+[    3.716000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.720000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.728000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[40]
+[    3.732000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[26] val[26]*************
+[    3.744000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.752000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[41]
+[    3.756000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[11] val[11]*************
+[    3.768000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.772000] usb 2-1: new high-speed USB device number 2 using exynos-ehci
+[    3.784000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[42]
+[    3.788000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[3] val[3]*************
+[    3.800000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.808000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[21]
+[    3.812000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[26] val[26]*************
+[    3.824000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.832000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[22]
+[    3.836000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[11] val[11]*************
+[    3.848000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.856000] axp22_dldo3: No configuration
+[    3.860000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.868000] axp22_dldo4: No configuration
+[    3.872000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.880000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[25]
+[    3.884000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[11] val[11]*************
+[    3.896000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.904000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[26]
+[    3.912000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[26] val[26]*************
+[    3.912000] usb 2-1: New USB device found, idVendor=1a40, idProduct=0101
+[    3.912000] usb 2-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+[    3.912000] usb 2-1: Product: USB 2.0 Hub
+[    3.912000] hub 2-1:1.0: USB hub found
+[    3.912000] hub 2-1:1.0: 4 ports detected
+[    3.944000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.952000] axp22_eldo3: No configuration
+[    3.956000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.964000] axp22_dc5ldo: No configuration
+[    3.968000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    3.976000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[33]
+[    3.984000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[17] val[17]*************
+[    3.992000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.000000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[34]
+[    4.008000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[30] val[30]*************
+[    4.016000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.028000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[35]
+[    4.032000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[30] val[30]*************
+[    4.044000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.052000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[36]
+[    4.056000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[45] val[45]*************
+[    4.068000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.076000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[37]
+[    4.080000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[10] val[10]*************
+[    4.092000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.100000] [ymdebug][devm_regulator_register.drivers/regulator/devres.c.209] into
+[    4.108000] axp22-supplyer axp22-supplyer.19:  AXP228_BATTERY_VERSION:(2015.02.15:modify)
+[    4.112000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[52]
+[    4.120000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[71] val[67]*************
+[    4.124000] init[1]: undefined instruction: pc=0000007f9437f348
+[    4.124000] Code: d503201f d503201f 4eaf1def d65f03c0 (d53be040) 
+[    4.144000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[130]
+[    4.152000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[224] val[192]*************
+[    4.164000] thermal thermal_zone1: failed to read out thermal zone (-19)
+[    4.172000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[49]
+[    4.176000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[3] val[3]*************
+[    4.184000] usb 2-1.1: new high-speed USB device number 3 using exynos-ehci
+[    4.192000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[54]
+[    4.200000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[88] val[0]*************
+[    4.208000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.247] into,reg[53]
+[    4.212000] [ymdebug][axp_update.drivers/power/axp_power/axp-rw.h.251] reg_val[15] val[15]*************
+[    4.220000] systemd[1]: System time before build time, advancing clock.
+[    4.220000] now_rest_vol = 0
+[    4.224000] c0096000.tmuctrl supply vtmu not found, using dummy regulator
+[    4.224000] thermal thermal_zone0: failed to read out thermal zone (-22)
+[    4.224000] device-mapper: uevent: version 1.0.3
+[    4.224000] device-mapper: ioctl: 4.34.0-ioctl (2015-10-28) initialised: dm-devel@redhat.com
+[    4.224000] Bluetooth: HCI UART driver ver 2.3
+[    4.224000] Bluetooth: HCI UART protocol H4 registered
+[    4.224000] Bluetooth: HCI UART protocol BCM registered
+[    4.224000] DVFS: ASV[2] IDS 18mA, Ro 117 -> Table [IDS 15mA, Ro 130]
+[    4.224000] ASV  0 =  1400000khz,  1275000 uV
+[    4.224000] ASV  1 =  1300000khz,  1225000 uV
+[    4.224000] ASV  2 =  1200000khz,  1175000 uV
+[    4.224000] ASV  3 =  1100000khz,  1125000 uV
+[    4.224000] ASV  4 =  1000000khz,  1100000 uV
+[    4.224000] ASV  5 =   900000khz,  1075000 uV
+[    4.224000] ASV  6 =   800000khz,  1050000 uV
+[    4.224000] ASV  7 =   700000khz,  1025000 uV
+[    4.224000] ASV  8 =   600000khz,  1000000 uV
+[    4.224000] ASV  9 =   500000khz,  1000000 uV
+[    4.224000] ASV 10 =   400000khz,  1000000 uV
+[    4.224000] DVFS: cpu DFS with PLL.1 [tables=11]
+[    4.228000] Synopsys Designware Multimedia Card Interface Driver
+[    4.228000] usbcore: registered new interface driver usbhid
+[    4.228000] usbhid: USB HID core driver
+[    4.228000] ashmem: initialized
+[    4.232000] nexell-pcm nexell-pcm: snd pcm: register sound platform 'nexell-pcm'
+[    4.232000] nexell-i2s c0055000.i2s: snd i2s: ch 0, master, iis mode, 48000(47999)hz, 32 FBITs,
+[    4.232000] nexell-i2s c0055000.i2s: MCLK=12287880hz, RFS=256
+[    4.236000] nexell-spdif-tx c0059000.spdiftx: spdif-tx: 48000(47999)Hz, MCLK=12287880hz
+[    4.376000] nx-simple-card sound: snd-null-voice <-> c0055000.i2s mapping ok
+[    4.380000] nx-simple-card sound: dit-hifi <-> c0059000.spdiftx mapping ok
+[    4.388000] Mirror/redirect action on
+[    4.392000] u32 classifier
+[    4.396000]     Actions configured
+[    4.396000] usb 2-1.1: New USB device found, idVendor=0bda, idProduct=881a
+[    4.396000] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    4.396000] usb 2-1.1: Product: 802.11n NIC
+[    4.396000] usb 2-1.1: Manufacturer: Realtek
+[    4.396000] usb 2-1.1: SerialNumber: 123456
+[    4.424000] Netfilter messages via NETLINK v0.30.
+[    4.428000] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+[    4.436000] ctnetlink v0.93: registering with nfnetlink.
+[    4.440000] nf_tables: (c) 2007-2009 Patrick McHardy <kaber@trash.net>
+[    4.448000] nf_tables_compat: (c) 2012 Pablo Neira Ayuso <pablo@netfilter.org>
+[    4.456000] xt_time: kernel timezone is -0000
+[    4.460000] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    4.464000] arp_tables: (C) 2002 David S. Miller
+[    4.468000] Initializing XFRM netlink socket
+[    4.472000] NET: Registered protocol family 10
+[    4.480000] mip6: Mobile IPv6
+[    4.480000] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    4.484000] NET: Registered protocol family 17
+[    4.488000] NET: Registered protocol family 15
+[    4.496000] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    4.508000] Bridge firewalling registered
+[    4.512000] Ebtables v2.0 registered
+[    4.516000] Bluetooth: RFCOMM TTY layer initialized
+[    4.520000] Bluetooth: RFCOMM socket layer initialized
+[    4.524000] Bluetooth: RFCOMM ver 1.11
+[    4.528000] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    4.532000] Bluetooth: BNEP filters: protocol multicast
+[    4.540000] Bluetooth: BNEP socket layer initialized
+[    4.544000] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    4.548000] Bluetooth: HIDP socket layer initialized
+[    4.556000] 8021q: 802.1Q VLAN Support v1.8
+[    4.560000] Key type dns_resolver registered
+[    4.564000] Loading compiled-in X.509 certificates
+[    4.568000] input: gpio_keys as /devices/platform/gpio_keys/input/input1
+[    4.576000] nx-rtc c0010c00.rtc: setting system clock to 2019-10-09 11:25:59 UTC (1570620359)
+SELinux:  Could not open policy file <= /etc/selinux/tar[    4.588000] dhd_module_init in
+[    4.592000] dhd_wlan_init: START.......
+[    4.596000] failed to get device node of bcmdhd
+[    4.600000] dhd_wlan_init: failed to initiate GPIO, ret=-19
+[    4.604000] dhd_module_init: failed in dhd_wlan_init.
+[    4.608000] ALSA device list:
+[    4.612000]   #0: nanopi3-audio
+geted/policy/policy.31:  No such file or directory
+[    4.740000] systemd[1]: systemd 242 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFU)
+[    4.760000] systemd[1]: Detected architecture arm64.
+
+Welcome to Lucker GNU/Linux Rolling!
+
+[    4.796000] systemd[1]: Set hostname to <Lucker>.
+[    5.112000] systemd[1]: File /lib/systemd/system/systemd-journald.service:12 configures an IP firewall (IPAddressDeny=any), but the local system does not support BPF/cgroup based firewal.
+[    5.124000] systemd[1]: Proceeding WITHOUT firewalling in effect! (This warning is only shown for the first loaded unit using IP firewalling.)
+[    5.312000] systemd[1]: /lib/systemd/system/dbus.socket:4: ListenStream= references a path below legacy directory /var/run/, updating /var/run/dbus/system_bus_socket → /run/dbus/system_ .
+[    5.368000] systemd[1]: /lib/systemd/system/pcscd.socket:4: ListenStream= references a path below legacy directory /var/run/, updating /var/run/pcscd/pcscd.comm ������ /run/pcscd/pcscd.c.[    5.392000] random: systemd: uninitialized urandom read (16 bytes read, 81 bits of entropy available)
+[    5.400000] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[    5.420000] random: systemd: uninitialized urandom read (16 bytes read, 81 bits of entropy available)
+[    5.424000] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[    5.444000] random: systemd: uninitialized urandom read (16 bytes read, 81 bits of entropy available)
+[    5.452000] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[    5.468000] random: systemd: uninitialized urandom read (16 bytes read, 81 bits of entropy available)
+[    5.476000] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[    5.492000] random: systemd: uninitialized urandom read (16 bytes read, 82 bits of entropy available)
+[    5.496000] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password R�…uests to Wall Directory Watch.
+[    5.520000] random: systemd: uninitialized urandom read (16 bytes read, 82 bits of entropy available)
+[    5.524000] systemd[1]: Listening on Syslog Socket.
+[  OK  ] Listening on Syslog Socket.
+[    5.544000] random: systemd: uninitialized urandom read (16 bytes read, 82 bits of entropy available)
+[    5.548000] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password �…ts to Console Directory Watch.
+[    5.572000] random: systemd: uninitialized urandom read (16 bytes read, 82 bits of entropy available)
+[    5.576000] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[    5.596000] random: systemd: uninitialized urandom read (16 bytes read, 83 bits of entropy available)
+[    5.600000] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[    5.620000] random: systemd: uninitialized urandom read (16 bytes read, 83 bits of entropy available)
+[    5.628000] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[    5.652000] systemd[1]: Starting Create list of required static device nodes for the current kernel...
+         Starting Create list of re�…odes for the current kernel...
+[    5.676000] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[    5.692000] systemd[1]: Reached target Slices.
+[  OK  ] Reached target Slices.
+[    5.708000] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[    5.724000] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[    5.744000] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[    5.760000] systemd[1]: Starting udev Coldplug all Devices...
+         Starting udev Coldplug all Devices...
+[    5.780000] systemd[1]: Created slice system-getty.slice.
+[  OK  ] Created slice system-getty.slice.
+[    5.796000] systemd[1]: Condition check resulted in Arbitrary Executable File Formats File System Automount Point being skipped.
+[    5.804000] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[    5.824000] systemd[1]: Reached target Swap.
+[  OK  ] Reached target Swap.
+[    5.840000] systemd[1]: Reached target Local Encrypted Volumes.
+[  OK  ] Reached target Local Encrypted Volumes.
+[    5.856000] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[    5.876000] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[    5.892000] systemd[1]: Reached target Paths.
+[  OK  ] Reached target Paths.
+[    5.904000] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[    5.920000] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.
+[    5.932000] systemd[1]: Mounted Huge Pages File System.
+[  OK  ] Mounted Huge Pages File System.
+[    5.948000] systemd[1]: Started Load Kernel Modules.
+[  OK  ] Started Load Kernel Modules.
+[    5.964000] systemd[1]: Started Remount Root and Kernel File Systems.
+[  OK  ] Started Remount Root and Kernel File Systems.
+[    5.984000] systemd[1]: Started Create list of required static device nodes for the current kernel.
+[  OK  ] Started Create list of req�… nodes for the current kernel.
+[    6.004000] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System.
+[    6.024000] systemd[1]: Mounted POSIX Message Queue File System.
+[  OK  ] Mounted POSIX Message Queue File System.
+[    6.048000] systemd[1]: Starting Create System Users...
+         Starting Create System Users...
+[    6.064000] systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+[    6.072000] systemd[1]: Starting Load/Save Random Seed...
+         Starting Load/Save Random Seed...
+[    6.092000] systemd[1]: Starting Apply Kernel Variables...
+         Starting Apply Kernel Variables...
+[    6.116000] systemd[1]: Mounting Kernel Configuration File System...
+         Mounting Kernel Configuration File System...
+[    6.136000] systemd[1]: Mounting FUSE Control File System...
+         Mounting FUSE Control File System...
+[    6.156000] systemd[1]: Started Create System Users.
+[  OK  ] Started Create System Users.
+[    6.172000] systemd[1]: Started Load/Save Random Seed.
+[  OK  ] Started Load/Save Random Seed.
+[    6.192000] systemd[1]: Started Apply Kernel Variables.
+[  OK  ] Started Apply Kernel Variables.
+[    6.212000] systemd[1]: Mounted Kernel Configuration File System.
+[  OK  ] Mounted Kernel Configuration File System.
+[    6.228000] systemd[1]: Mounted FUSE Control File System.
+[  OK  ] Mounted FUSE Control File System.
+[    6.248000] systemd[1]: Starting Create Static Device Nodes in /dev...
+         Starting Create Static Device Nodes in /dev...
+[    6.272000] systemd[1]: Started udev Coldplug all Devices.
+[  OK  ] Started udev Coldplug all Devices.
+[    6.292000] systemd[1]: Starting Helper to synchronize boot up for ifupdown...
+         Starting Helper to synchronize boot up for ifupdown...
+[    6.312000] systemd[1]: Started Create Static Device Nodes in /dev.
+[  OK  ] Started Create Static Device Nodes in /dev.
+[    6.336000] systemd[1]: Starting udev Kernel Device Manager...
+         Starting udev Kernel Device Manager...
+[    6.352000] systemd[1]: Reached target Local File Systems (Pre).
+[  OK  ] Reached target Local File Systems (Pre).
+[    6.368000] systemd[1]: Reached target Local File Systems.
+[  OK  ] Reached target Local File Systems.
+[    6.384000] systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+[    6.388000] systemd[1]: Starting Set console font and keymap...
+         Starting Set console font and keymap...
+[    6.408000] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Started Set console font and keymap.
+         Starting Flush Journal to Persistent Storage...
+[  OK  ] Started udev Kernel Device Manager.
+[    6.484000] systemd-journald[204]: Received request to flush runtime journal from PID 1
+[  OK  ] Found device /dev/ttySAC0.
+[    7.220000] random: nonblocking pool is initialized
+[    7.280000] systemd-journal[204]: syscall 291
+[    7.280000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.288000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.296000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.300000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.308000] PC is at 0x7fa7b43e90
+[    7.312000] LR is at 0x7fa78b34d0
+[    7.316000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.324000] sp : 0000007fe3513f70
+[    7.324000] x29: 0000007fe3513f70 [    7.328000] usbcore: registered new interface driver rtl88xxau
+
+[    7.336000] x28: 0000000000000000 
+[    7.340000] x27: 0000000000000010 x26: 00000055a032e250 
+[    7.344000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.348000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.352000] x21: 0000007fa7be7000 x20: 00000055a032e250 
+[    7.360000] x19: 0000007fe35140f8 x18: 000000000000802f 
+[    7.364000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.368000] x15: 0000007fa7af5de4 x14: 00000055a033aa8a 
+[    7.376000] x13: 007e6c616e72756f x12: 6a2e393338656636 
+[    7.380000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.384000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.392000] x7 : 00000055a032e250 x6 : 0000000000000010 
+[    7.396000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.400000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.408000] x1 : 00000055a032e250 x0 : 0000000000000010 
+[    7.412000] 
+[    7.416000] systemd-journal[204]: syscall 291
+[    7.416000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.424000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.432000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.440000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.444000] PC is at 0x7fa7b43e90
+[    7.448000] LR is at 0x7fa78b34d0
+[    7.452000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.460000] sp : 0000007fe3513f70
+[    7.464000] x29: 0000007fe3513f70 x28: 0000000000000001 
+[    7.468000] x27: 0000000000000010 x26: 00000055a032bf40 
+[    7.472000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.476000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.476000] x21: 0000007fa7be7000 x20: 00000055a032bf40 
+[    7.476000] x19: 0000007fe35140f8 x18: 000000000000802f 
+[    7.476000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.476000] x15: 0000007fa7af5de4 x14: 00000055a033aaf3 
+[    7.476000] x13: 373439353030302d x12: 6632343030303030 
+[    7.476000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.476000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.476000] x7 : 00000055a032bf40 x6 : 0000000000000010 
+[    7.476000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.476000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.476000] x1 : 00000055a032bf40 x0 : 0000000000000010 
+[    7.476000] 
+[    7.476000] systemd-journal[204]: syscall 291
+[    7.476000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.476000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.476000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.476000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.476000] PC is at 0x7fa7b43e90
+[    7.476000] LR is at 0x7fa78b34d0
+[    7.476000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.476000] sp : 0000007fe3513f70
+[    7.476000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.476000] x27: 0000000000000010 x26: 00000055a032c100 
+[    7.476000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.476000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.476000] x21: 0000007fa7be7000 x20: 00000055a032c100 
+[    7.476000] x19: 0000007fe35140f8 x18: 000000000000802f 
+[    7.476000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.476000] x15: 0000007fa7af5de4 x14: 00000055a033ab3a 
+[    7.476000] x13: 007e6c616e72756f x12: 6a2e346431363961 
+[    7.476000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.476000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.476000] x7 : 00000055a032c100 x6 : 0000000000000010 
+[    7.476000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.476000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.476000] x1 : 00000055a032c100 x0 : 0000000000000010 
+[    7.476000] 
+[    7.480000] systemd-journal[204]: syscall 291
+[    7.480000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.480000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.480000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.480000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.480000] PC is at 0x7fa7b43e90
+[    7.480000] LR is at 0x7fa78b34d0
+[    7.480000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.480000] sp : 0000007fe3513f70
+[    7.480000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.480000] x27: 0000000000000010 x26: 00000055a032df20 
+[    7.480000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.480000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.480000] x21: 0000007fa7be7000 x20: 00000055a032df20 
+[    7.480000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.480000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.480000] x15: 0000007fa7af5de4 x14: 00000055a033ab9a 
+[    7.480000] x13: 007e6c616e72756f x12: 6a2e663137383536 
+[    7.480000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.480000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.480000] x7 : 00000055a032df20 x6 : 0000000000000010 
+[    7.480000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.480000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.480000] x1 : 00000055a032df20 x0 : 0000000000000010 
+[    7.480000] 
+[    7.480000] systemd-journal[204]: syscall 291
+[    7.480000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.480000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.480000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.480000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.480000] PC is at 0x7fa7b43e90
+[    7.480000] LR is at 0x7fa78b34d0
+[    7.480000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.480000] sp : 0000007fe3513f70
+[    7.480000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.480000] x27: 0000000000000010 x26: 00000055a032dd50 
+[    7.480000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.480000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.480000] x21: 0000007fa7be7000 x20: 00000055a032dd50 
+[    7.480000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.480000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.480000] x15: 0000007fa7af5de4 x14: 00000055a033ac0a 
+[    7.480000] x13: 007e6c616e72756f x12: 6a2e313730393232 
+[    7.480000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.480000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.480000] x7 : 00000055a032dd50 x6 : 0000000000000010 
+[    7.480000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.480000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.480000] x1 : 00000055a032dd50 x0 : 0000000000000010 
+[    7.480000] 
+[    7.480000] systemd-journal[204]: syscall 291
+[    7.480000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.480000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.480000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.480000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.480000] PC is at 0x7fa7b43e90
+[    7.480000] LR is at 0x7fa78b34d0
+[    7.480000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.480000] sp : 0000007fe3513f70
+[    7.480000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.480000] x27: 0000000000000010 x26: 00000055a032eac0 
+[    7.480000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.480000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.480000] x21: 0000007fa7be7000 x20: 00000055a032eac0 
+[    7.480000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.480000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.480000] x15: 0000007fa7af5de4 x14: 00000055a033ac52 
+[    7.480000] x13: 007e6c616e72756f x12: 6a2e643134376231 
+[    7.480000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.480000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.480000] x7 : 00000055a032eac0 x6 : 0000000000000010 
+[    7.480000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.480000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.480000] x1 : 00000055a032eac0 x0 : 0000000000000010 
+[    7.480000] 
+[    7.484000] systemd-journal[204]: syscall 291
+[    7.484000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.484000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.484000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.484000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.484000] PC is at 0x7fa7b43e90
+[    7.484000] LR is at 0x7fa78b34d0
+[    7.484000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.484000] sp : 0000007fe3513f70
+[    7.484000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.484000] x27: 0000000000000010 x26: 00000055a032dab0 
+[    7.484000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.484000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.484000] x21: 0000007fa7be7000 x20: 00000055a032dab0 
+[    7.484000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.484000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.484000] x15: 0000007fa7af5de4 x14: 00000055a033ac9a 
+[    7.484000] x13: 007e6c616e72756f x12: 6a2e653732643130 
+[    7.484000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.484000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.484000] x7 : 00000055a032dab0 x6 : 0000000000000010 
+[    7.484000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.484000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.484000] x1 : 00000055a032dab0 x0 : 0000000000000010 
+[    7.484000] 
+[    7.484000] systemd-journal[204]: syscall 291
+[    7.484000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.484000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.484000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.484000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.484000] PC is at 0x7fa7b43e90
+[    7.484000] LR is at 0x7fa78b34d0
+[    7.484000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.484000] sp : 0000007fe3513f70
+[    7.484000] x29: 0000007fe3513f70 x28: 0000000000000001 
+[    7.484000] x27: 0000000000000010 x26: 00000055a032f2a0 
+[    7.484000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.484000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.484000] x21: 0000007fa7be7000 x20: 00000055a032f2a0 
+[    7.484000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.484000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.484000] x15: 0000007fa7af5de4 x14: 00000055a033ad03 
+[    7.484000] x13: 373439353030302d x12: 3130303030303030 
+[    7.484000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.484000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.484000] x7 : 00000055a032f2a0 x6 : 0000000000000010 
+[    7.484000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.484000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.484000] x1 : 00000055a032f2a0 x0 : 0000000000000010 
+[    7.484000] 
+[    7.484000] systemd-journal[204]: syscall 291
+[    7.484000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.484000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.484000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.484000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.484000] PC is at 0x7fa7b43e90
+[    7.484000] LR is at 0x7fa78b34d0
+[    7.484000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.484000] sp : 0000007fe3513f70
+[    7.484000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.484000] x27: 0000000000000010 x26: 00000055a032c140 
+[    7.484000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.484000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.484000] x21: 0000007fa7be7000 x20: 00000055a032c140 
+[    7.484000] x19: 0000007fe35140f8 x18: 000000000000014f 
+[    7.484000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.484000] x15: 0000007fa7af5de4 x14: 00000055a033ad4a 
+[    7.484000] x13: 007e6c616e72756f x12: 6a2e383234313661 
+[    7.484000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.484000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.484000] x7 : 00000055a032c140 x6 : 0000000000000010 
+[    7.484000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.484000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.484000] x1 : 00000055a032c140 x0 : 0000000000000010 
+[    7.484000] 
+[    7.484000] systemd-journal[204]: syscall 291
+[    7.484000] Code: aa0403f3 aa0103e7 d2802468 d4000001 (b140041f) 
+[    7.484000] CPU: 7 PID: 204 Comm: systemd-journal Tainted: G           O    4.4.49-s5p6818 #119
+[    7.484000] Hardware name: FriendlyElec NanoPi Fire3 (DT)
+[    7.484000] task: ffffffc06c829880 ti: ffffffc06e8a8000 task.ti: ffffffc06e8a8000
+[    7.484000] PC is at 0x7fa7b43e90
+[    7.484000] LR is at 0x7fa78b34d0
+[    7.484000] pc : [<0000007fa7b43e90>] lr : [<0000007fa78b34d0>] pstate: 20000000
+[    7.484000] sp : 0000007fe3513f70
+[    7.484000] x29: 0000007fe3513f70 x28: 0000000000000000 
+[    7.484000] x27: 0000000000000010 x26: 00000055a032d1d0 
+[    7.484000] x25: 0000007fa7966928 x24: 0000000000000010 
+[    7.484000] x23: 0000007fa7a7d000 x22: 0000007fe35142f8 
+[    7.484000] x21: 0000007fa7be7000 x20: 00000055a032d1d0 
+[    7.484000] x19: 0000007fe35140f8 x18: 000000000000002f 
+[    7.484000] x17: 0000007fa7b43e48 x16: 0000007fa7a7d850 
+[    7.484000] x15: 0000007fa7af5de4 x14: 00000055a033adaa 
+[    7.484000] x13: 007e6c616e72756f x12: 6a2e353434303862 
+[    7.484000] x11: ffffffffffffffff x10: 0000000000000010 
+[    7.484000] x9 : 000000000000000f x8 : 0000000000000123 
+[    7.484000] x7 : 00000055a032d1d0 x6 : 0000000000000010 
+[    7.484000] x5 : 0000000000004000 x4 : 0000007fe35140f8 
+[    7.484000] x3 : 0000000000000800 x2 : 0000000000004000 
+[    7.484000] x1 : 00000055a032d1d0 x0 : 0000000000000010 
+[    7.484000] 
+[  OK  ] Started Helper to synchronize boot up for ifupdown.
+[  OK  ] Started Flush Journal to Persistent Storage.
+         Starting Create Volatile Files and Directories...
+         Starting Raise network interfaces...
+[  OK  ] Listening on Load/Save RF �…itch Status /dev/rfkill Watch.
+[  OK  ] Reached target Sound Card.
+         Starting Load/Save RF Kill Switch Status...
+[  OK  ] Started Load/Save RF Kill Switch Status.
+[  OK  ] Started Create Volatile Files and Directories.
+         Starting Network Time Synchronization...
+         Starting Update UTMP about System Boot/Shutdown...
+[  OK  ] Started Update UTMP about System Boot/Shutdown.
+[FAILED] Failed to start Raise network interfaces.
+See 'systemctl status networking.service' for details.
+[  OK  ] Reached target Network.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Listening on UUID daemon activation socket.
+[  OK  ] Listening on PC/SC Smart Card Daemon Activation Socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+         Starting Resize filesystem...
+         Starting OpenBSD Secure Shell server...
+         Starting Permit User Sessions...
+         Starting Login Service...
+         Starting System Logging Service...
+         Starting /etc/rc.local Compatibility...
+[    9.808000] usb 2-1: USB disconnect, device number 2
+[    9.808000] usb 2-1.1: USB disconnect, device number 3
+[  OK  ] Started D-Bus System Message Bus.
+         Starting Remove Stale Onli�…t4 Metadata Check Snapshots...
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target System Time Synchronized.
+[    9.882904] rc.local[407]: swapon: /root/swap: insecure permissions 0644, 0600 suggested.
+[  OK  ] Started Periodic ext4 Onli�…ata Check for All Filesystems.
+[  OK  ] Started Daily rotation of log files.                                                                                    
+[    9.904000] Adding 102396k swap on /root/swap.  Priority:-1 extents:6 across:528380k SS                                       
+[  OK  ] Started Daily man-db regeneration.                                                                                      
+[  OK  ] Started Daily apt download activities.                                                                                  
+[  OK  ] Started Daily apt upgrade and clean activities.                                                                         
+[  OK  ] Reached target Timers.                                                                                                  
+[FAILED] Failed to start Resize filesystem.                                                                                      
+See 'systemctl status rpiwiggle.service' for details.                                                                            
+[  OK  ] Started System Logging Service.                                                                                         
+[  OK  ] Started Permit User Sessions.                                                                                           
+[  OK  ] Started OpenBSD Secure Shell server.                                                                                    
+[   10.156000] usb 2-1: new high-speed USB device number 4 using exynos-ehci                                                     
+[   10.288000] usb 2-1: New USB device found, idVendor=1a40, idProduct=0101                                                      
+[   10.288000] usb 2-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0                                                 
+[   10.296000] usb 2-1: Product: USB 2.0 Hub                                                                                     
+[   10.300000] hub 2-1:1.0: USB hub found                                                                                        
+[   10.304000] hub 2-1:1.0: 4 ports detected                                                                                     
+[  OK  ] Started Login Service.                                                                                                  
+[   10.580000] usb 2-1.1: new high-speed USB device number 5 using exynos-ehci                                                   
+[   10.688000] usb 2-1.1: New USB device found, idVendor=0bda, idProduct=881a
+[   10.688000] usb 2-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   10.696000] usb 2-1.1: Product: 802.11n NIC
+[   10.700000] usb 2-1.1: Manufacturer: Realtek
+[   10.704000] usb 2-1.1: SerialNumber: 123456
+[  OK  ] Started Remove Stale Onlin�…ext4 Metadata Check Snapshots.
+[   14.978052] rc.local[407]: turn on 4g...
+[   14.985988] rc.local[407]: starting turn on 4g...
+[   16.722127] rc.local[407]: turn on 4g over
+[   19.990037] rc.local[407]: connect 4g network...
+[  OK  ] Started /etc/rc.local Compatibility.
+[   19.998188] rc.local[407]: power on wifi...
+[   20.013956] rc.local[407]: start batter monitor
+[   20.022020] rc.local[407]: start power key monitor
+[  OK  ] Started Getty on tty1.
+[   20.029898] rc.local[407]: start supervisord...
+[  OK  ] Started Serial Getty on ttySAC0.
+[   20.053460] rc.local[407]: rm: cannot remove '/var/lib/dhcp/dhclient.leases': No such file or directory
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Reached target Multi-User System.
+[  OK  ] Reached target Graphical Interface.
+         Starting Update UTMP about System Runlevel Changes...
+[  OK  ] Started Update UTMP about System Runlevel Changes.
+
+Lucker GNU/Linux Rolling Lucker ttySAC0

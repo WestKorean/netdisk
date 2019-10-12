@@ -1,0 +1,51 @@
+--------------------------------
+温度测试:
+    高温: 通过恒温箱加热到40度, 恒温箱显示温度:40  温度表显示温度:39 电量计测试温度:38
+    低温: 通过放冰箱, 温度表显示温度:14  电量计测试温度:15
+
+--------------------------------
+3399 新板相关问题:
+
+RECOVERY 按键没有接  (RECOVERY 提供镜像烧写功能, 如果没有还有一种方法可以进入烧录模式,需短接开发板上的两个点,比较麻烦,官方说明为有风险操作,不推荐使用此方法)
+TYPE-C 	  缺少芯片 无法使用,无法进行OTG
+
+
+
+FF72_0000		GPIO0
+FF78_0000		GPIO2
+DR: 0  data 	DDR: +4  direction 
+FF77_0000		GRF
+FF32_0000		PMU_GRF
+	
+
+
+GRF_GPIO2A_IOMUX 0x0e000 
+GRF_GPIO2D_IOMUX 0x0e00c 
+
+GPIO_EXT_PORTA  0x0050
+
+
+4.4.126
+
+
+--------------------------------
+7.15
+开机闪屏问题测试:
+找到闪屏原因, 设备树文件rk3399-firefly.dts中
+&ov13850 {
+	reset-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+	pwdn-gpios = <&gpio2 12 GPIO_ACTIVE_HIGH>;
+	status = "okay";
+};
+
+&ov13850_1 {
+	reset-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+	pwdn-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
+	status = "okay";
+};
+如果改成 disabled 会出现闪屏
+
+已通过Uboot使能LCD gpio解决
+--------------------------------
+
+
